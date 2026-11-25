@@ -54,6 +54,24 @@
       background: var(--paper);
     }
 
+    .special-banner {
+      padding-block: 18px;
+      background: var(--accent);
+      text-align: center;
+    }
+
+    .special-banner-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px 20px;
+    }
+
+    .special-banner p {
+      margin: 0;
+      font-weight: 600;
+    }
+
     .header-inner {
       min-height: 76px;
       display: flex;
@@ -462,6 +480,10 @@
         gap: 6px 18px;
       }
 
+      .special-banner-inner {
+        flex-direction: column;
+      }
+
       .hero {
         padding-block: 52px 44px;
       }
@@ -520,6 +542,13 @@
       </nav>
     </div>
   </header>
+
+  <aside class="special-banner" aria-label="This week's special">
+    <div class="wrap special-banner-inner">
+      <p>This week's special: Saffron Pistachio Cake, Rs 2,400</p>
+      <a class="button" href="#order">Place an order</a>
+    </div>
+  </aside>
 
   <main>
     <section class="hero" id="home">
