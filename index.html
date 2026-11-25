@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFF8EE">
+  <meta name="description" content="Fresh cakes, cookies and savoury treats from a Lahore home kitchen.">
+  <title>Saffron Crumb | Fresh from a Lahore home kitchen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #FFF8EE;
+      --ink: #3B2A1A;
+      --brand: #C2410C;
+      --accent: #F4B942;
+      --card: #FFFFFF;
+      --border: #EADBC8;
+      --error: #B91C1C;
+      --muted: #735F4B;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "Poppins", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--brand);
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: var(--paper);
+    }
+
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      color: var(--brand);
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px 24px;
+    }
+
+    nav a {
+      color: var(--ink);
+      font-size: .9rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+      color: var(--brand);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding-block: 74px 82px;
+      background:
+        radial-gradient(ellipse at 82% 45%, rgba(244, 185, 66, .20), transparent 28%),
+        var(--paper);
+    }
+
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(240px, .9fr);
+      align-items: center;
+      gap: 40px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--brand);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--brand);
+      font-family: var(--serif);
+      line-height: 1.2;
+    }
+
+    h1 {
+      max-width: 650px;
+      margin: 0;
+      font-size: clamp(2.6rem, 7vw, 4.7rem);
+      letter-spacing: -.035em;
+    }
+
+    .hero-tagline {
+      margin: 18px 0 26px;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 20px;
+      border: 2px solid var(--brand);
+      border-radius: 12px;
+      background: var(--brand);
+      color: #fff;
+      font: 600 .95rem var(--sans);
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      border-color: #9A3412;
+      background: #9A3412;
+    }
+
+    .button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .hero-art {
+      position: relative;
+      display: grid;
+      min-height: 300px;
+      place-items: center;
+    }
+
+    .hero-art::before,
+    .hero-art::after {
+      position: absolute;
+      display: block;
+      border-radius: 50%;
+      content: "";
+    }
+
+    .hero-art::before {
+      width: 270px;
+      height: 270px;
+      background: var(--accent);
+      opacity: .8;
+    }
+
+    .hero-art::after {
+      width: 216px;
+      height: 216px;
+      border: 2px dashed rgba(59, 42, 26, .32);
+    }
+
+    .hero-emoji {
+      z-index: 1;
+      font-size: clamp(7rem, 17vw, 11rem);
+      filter: drop-shadow(0 10px 8px rgba(59, 42, 26, .13));
+    }
+
+    section {
+      padding-block: 72px;
+      scroll-margin-top: 20px;
+    }
+
+    .section-heading {
+      max-width: 680px;
+      margin: 0 auto 34px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+    }
+
+    .section-heading p {
+      margin: 12px 0 0;
+      color: var(--muted);
+    }
+
+    .menu-category + .menu-category {
+      margin-top: 38px;
+    }
+
+    .menu-category h3 {
+      margin: 0 0 16px;
+      font-size: 1.55rem;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .menu-card {
+      display: flex;
+      min-height: 174px;
+      flex-direction: column;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--card);
+      box-shadow: 0 5px 16px rgba(59, 42, 26, .035);
+    }
+
+    .menu-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .menu-emoji {
+      flex: 0 0 auto;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .menu-card h4 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 1.2rem;
+    }
+
+    .menu-card p {
+      margin: 10px 0 14px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .price {
+      margin-top: auto;
+      color: var(--brand);
+      font-weight: 700;
+    }
+
+    .menu-cta {
+      margin-top: 34px;
+      text-align: center;
+    }
+
+    .about-section {
+      border-block: 1px solid var(--border);
+      background: #FFF2DE;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+      align-items: center;
+      gap: 48px;
+    }
+
+    .about-art {
+      display: grid;
+      min-height: 240px;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--card);
+      font-size: 6rem;
+    }
+
+    .about-copy h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.6rem);
+    }
+
+    .about-copy p {
+      margin: 14px 0 22px;
+      color: var(--muted);
+    }
+
+    .order-section {
+      padding-bottom: 82px;
+    }
+
+    .order-card {
+      max-width: 700px;
+      margin-inline: auto;
+      padding: clamp(20px, 5vw, 40px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--card);
+      box-shadow: 0 8px 28px rgba(59, 42, 26, .06);
+    }
+
+    .order-form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field label {
+      font-size: .93rem;
+      font-weight: 600;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 48px;
+      padding: 10px 12px;
+      border: 1px solid #B9A58E;
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+      font: 400 .95rem var(--sans);
+    }
+
+    input[aria-invalid="true"],
+    select[aria-invalid="true"] {
+      border-color: var(--error);
+    }
+
+    .field-error {
+      min-height: 0;
+      margin: 0;
+      color: var(--error);
+      font-size: .82rem;
+    }
+
+    .field-help {
+      margin: 0;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .field-error:empty {
+      display: none;
+    }
+
+    .total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: #FFF2DE;
+      font-weight: 600;
+    }
+
+    .total output {
+      color: var(--brand);
+      font-size: 1.1rem;
+    }
+
+    .order-form .button {
+      width: 100%;
+    }
+
+    .form-note {
+      margin: -7px 0 0;
+      color: var(--muted);
+      font-size: .82rem;
+      text-align: center;
+    }
+
+    .success-message {
+      margin: 0;
+      padding: 14px 16px;
+      border: 1px solid #86A88A;
+      border-radius: 12px;
+      background: #F0F7EF;
+      color: #244A2A;
+    }
+
+    .success-message:empty {
+      display: none;
+    }
+
+    footer {
+      padding: 22px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .83rem;
+      text-align: center;
+    }
+
+    @media (min-width: 600px) {
+      .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .order-form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .field-wide,
+      .total,
+      .order-form .button,
+      .form-note,
+      .success-message {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .menu-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+        padding-block: 12px;
+      }
+
+      nav {
+        justify-content: flex-start;
+        gap: 6px 18px;
+      }
+
+      .hero {
+        padding-block: 52px 44px;
+      }
+
+      .hero-inner,
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .hero-art {
+        min-height: 220px;
+        grid-row: 1;
+      }
+
+      .hero-art::before {
+        width: 205px;
+        height: 205px;
+      }
+
+      .hero-art::after {
+        width: 165px;
+        height: 165px;
+      }
+
+      .hero-emoji {
+        font-size: 7rem;
+      }
+
+      section {
+        padding-block: 54px;
+      }
+
+      .about-art {
+        min-height: 180px;
+        font-size: 4.5rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="index.html#home">Saffron Crumb</a>
+      <nav aria-label="Main navigation">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#menu">Menu</a>
+        <a href="about.html">About</a>
+        <a href="index.html#order">Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-inner">
+        <div>
+          <p class="eyebrow">A little something, freshly baked</p>
+          <h1>Good things come from a home kitchen.</h1>
+          <p class="hero-tagline">Fresh from a Lahore home kitchen.</p>
+          <a class="button" href="#order">Place an order</a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <span class="hero-emoji">🎂</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">Made with care</p>
+          <h2>Fresh from our kitchen</h2>
+          <p>Find a favourite for your tea table, celebration or cosy afternoon.</p>
+        </div>
+
+        <div class="menu-category">
+          <h3>Cakes</h3>
+          <div class="menu-grid">
+            <article class="menu-card">
+              <div class="menu-card-top"><span class="menu-emoji" aria-hidden="true">🍰</span><h4>Classic Chocolate Cake</h4></div>
+              <p>Soft chocolate layers with a smooth cocoa finish.</p>
+              <span class="price">Rs 2,500</span>
+            </article>
+            <article class="menu-card">
+              <div class="menu-card-top"><span class="menu-emoji" aria-hidden="true">🍋</span><h4>Lemon Drizzle Cake</h4></div>
+              <p>Bright lemon sponge with a sweet citrus drizzle.</p>
+              <span class="price">Rs 2,000</span>
+            </article>
+            <article class="menu-card">
+              <div class="menu-card-top"><span class="menu-emoji" aria-hidden="true">🥕</span><h4>Carrot Walnut Cake</h4></div>
+              <p>Warmly spiced carrot cake with crunchy walnuts.</p>
+              <span class="price">Rs 2,200</span>
+            </article>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h3>Cookies &amp; Brownies</h3>
+          <div class="menu-grid">
+            <article class="menu-card">
+              <div class="menu-card-top"><span class="menu-emoji" aria-hidden="true">🍪</span><h4>Chocolate Chip Cookies</h4></div>
+              <p>Golden, buttery cookies with plenty of chocolate.</p>
+              <span class="price">Rs 800</span>
+            </article>
+            <article class="menu-card">
+              <div class="menu-card-top"><span class="menu-emoji" aria-hidden="true">🍫</span><h4>Fudgy Brownies</h4></div>
+              <p>Rich chocolate squares with soft, fudgy centres.</p>
+              <span class="price">Rs 1,000</span>
+            </article>
+            <article class="menu-card">
+              <div class="menu-card-top"><span class="menu-emoji" aria-hidden="true">🥜</span><h4>Peanut Butter Cookies</h4></div>
+              <p>Sweet and nutty cookies with a tender crumb.</p>
+              <span class="price">Rs 900</span>
+            </article>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h3>Savoury</h3>
+          <div class="menu-grid">
+            <article class="menu-card">
+              <div class="menu-card-top"><span class="menu-emoji" aria-hidden="true">🥐</span><h4>Chicken Patties</h4></div>
+              <p>Flaky pastry filled with gently spiced chicken.</p>
+              <span class="price">Rs 1,200</span>
+            </article>
+            <article class="menu-card">
+              <div class="menu-card-top"><span class="menu-emoji" aria-hidden="true">🧀</span><h4>Cheese &amp; Herb Scones</h4></div>
+              <p>Soft savoury scones with cheese and fresh herbs.</p>
+              <span class="price">Rs 1,000</span>
+            </article>
+            <article class="menu-card">
+              <div class="menu-card-top"><span class="menu-emoji" aria-hidden="true">🥧</span><h4>Vegetable Quiche</h4></div>
+              <p>A buttery crust with a creamy garden-vegetable filling.</p>
+              <span class="price">Rs 1,500</span>
+            </article>
+          </div>
+        </div>
+
+        <div class="menu-cta">
+          <a class="button" href="#order">Place an order</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="wrap about-inner">
+        <div class="about-art" aria-hidden="true">🧁</div>
+        <div class="about-copy">
+          <p class="eyebrow">A warm welcome</p>
+          <h2>A small kitchen, full of heart.</h2>
+          <p>Saffron Crumb is a home bakery in Lahore. We make cakes, bakes and savoury treats in small batches, with familiar ingredients and a little extra care.</p>
+          <a class="button" href="#order">Place an order</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="order-section" id="order">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">We’ll get baking</p>
+          <h2>Place an order</h2>
+          <p>Choose a treat and a pickup day. We’ll show your total before you send your request.</p>
+        </div>
+        <div class="order-card">
+          <form class="order-form" id="order-form" novalidate>
+            <div class="field">
+              <label for="customer-name">Your name</label>
+              <input id="customer-name" name="name" autocomplete="name" required>
+              <p class="field-error" id="name-error"></p>
+            </div>
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" pattern="03[0-9]{9}" maxlength="11" placeholder="03XXXXXXXXX" aria-describedby="phone-help phone-error" required>
+              <p class="field-help" id="phone-help">Enter exactly 11 digits, starting with 03.</p>
+              <p class="field-error" id="phone-error"></p>
+            </div>
+            <div class="field field-wide">
+              <label for="item">Choose an item</label>
+              <select id="item" name="item" required>
+                <option value="" data-price="0">Select a treat</option>
+                <option value="Classic Chocolate Cake" data-price="2500">Classic Chocolate Cake — Rs 2,500</option>
+                <option value="Lemon Drizzle Cake" data-price="2000">Lemon Drizzle Cake — Rs 2,000</option>
+                <option value="Carrot Walnut Cake" data-price="2200">Carrot Walnut Cake — Rs 2,200</option>
+                <option value="Chocolate Chip Cookies" data-price="800">Chocolate Chip Cookies — Rs 800</option>
+                <option value="Fudgy Brownies" data-price="1000">Fudgy Brownies — Rs 1,000</option>
+                <option value="Peanut Butter Cookies" data-price="900">Peanut Butter Cookies — Rs 900</option>
+                <option value="Chicken Patties" data-price="1200">Chicken Patties — Rs 1,200</option>
+                <option value="Cheese &amp; Herb Scones" data-price="1000">Cheese &amp; Herb Scones — Rs 1,000</option>
+                <option value="Vegetable Quiche" data-price="1500">Vegetable Quiche — Rs 1,500</option>
+              </select>
+              <p class="field-error" id="item-error"></p>
+            </div>
+            <div class="field">
+              <label for="quantity">Quantity</label>
+              <input id="quantity" name="quantity" type="number" inputmode="numeric" min="1" step="1" value="1" required>
+              <p class="field-error" id="quantity-error"></p>
+            </div>
+            <div class="field">
+              <label for="pickup-date">Pickup date</label>
+              <input id="pickup-date" name="pickupDate" type="date" required>
+              <p class="field-error" id="date-error"></p>
+            </div>
+            <div class="total" aria-live="polite">
+              <span>Order total</span>
+              <output id="order-total" for="item quantity">Rs 0</output>
+            </div>
+            <button class="button" type="submit">Send order request</button>
+            <p class="form-note">This sample form stays on this page. It does not send or store your details.</p>
+            <p class="success-message" id="success-message" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 Saffron Crumb · Lahore · Sample site for DISC 472</div>
+  </footer>
+
+  <script>
+    const form = document.querySelector("#order-form");
+    const item = document.querySelector("#item");
+    const quantity = document.querySelector("#quantity");
+    const phone = document.querySelector("#phone");
+    const pickupDate = document.querySelector("#pickup-date");
+    const total = document.querySelector("#order-total");
+    const successMessage = document.querySelector("#success-message");
+    const fields = [
+      { input: document.querySelector("#customer-name"), error: document.querySelector("#name-error") },
+      { input: phone, error: document.querySelector("#phone-error") },
+      { input: item, error: document.querySelector("#item-error") },
+      { input: quantity, error: document.querySelector("#quantity-error") },
+      { input: pickupDate, error: document.querySelector("#date-error") }
+    ];
+    const rupees = new Intl.NumberFormat("en-PK", {
+      maximumFractionDigits: 0
+    });
+
+    function updateTotal() {
+      const price = Number(item.selectedOptions[0].dataset.price || 0);
+      const count = Number(quantity.value);
+      total.value = `Rs ${rupees.format(price * (Number.isFinite(count) && count > 0 ? count : 0))}`;
+    }
+
+    function errorFor(input) {
+      if (!input.value.trim() && input.required) {
+        return "Please fill in this field.";
+      }
+      if (input === phone && !/^03\d{9}$/.test(input.value)) {
+        return "Enter exactly 11 digits starting with 03.";
+      }
+      if (input === quantity && (!Number.isInteger(Number(input.value)) || Number(input.value) < 1)) {
+        return "Enter a whole number of at least 1.";
+      }
+      if (input === pickupDate && input.value < pickupDate.min) {
+        return "Choose today or a later date.";
+      }
+      return "";
+    }
+
+    function validateField(input, error) {
+      const message = errorFor(input);
+      error.textContent = message;
+      input.setAttribute("aria-invalid", message ? "true" : "false");
+      return !message;
+    }
+
+    function setMinimumPickupDate() {
+      const today = new Date();
+      const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
+        .toISOString()
+        .slice(0, 10);
+      pickupDate.min = localToday;
+    }
+
+    function formatPickupDate(value) {
+      const [year, month, day] = value.split("-").map(Number);
+      return new Intl.DateTimeFormat("en-GB", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+        timeZone: "UTC"
+      }).format(new Date(Date.UTC(year, month - 1, day)));
+    }
+
+    item.addEventListener("change", updateTotal);
+    quantity.addEventListener("input", updateTotal);
+
+    for (const { input, error } of fields) {
+      input.addEventListener("input", () => {
+        validateField(input, error);
+        successMessage.textContent = "";
+      });
+      input.addEventListener("change", () => {
+        validateField(input, error);
+        successMessage.textContent = "";
+      });
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      successMessage.textContent = "";
+
+      const valid = fields
+        .map(({ input, error }) => validateField(input, error))
+        .every(Boolean);
+
+      if (!valid) {
+        fields.find(({ input, error }) => !validateField(input, error))?.input.focus();
+        return;
+      }
+
+      const selectedItem = item.value;
+      const count = Number(quantity.value);
+      const date = formatPickupDate(pickupDate.value);
+      successMessage.textContent =
+        `Thank you, ${document.querySelector("#customer-name").value.trim()}! Your request for ${count} × ${selectedItem} is ready for pickup on ${date}. Your total is ${total.value}.`;
+    });
+
+    setMinimumPickupDate();
+    updateTotal();
+  </script>
+</body>
+</html>
